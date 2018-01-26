@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, AppRegistry, ScrollView } from 'react-native';
 
+import CourseSelection from '../../components/CourseSelection/CourseSelection';
 
 export default class Home extends Component {
   constructor(props) {
@@ -14,7 +15,7 @@ export default class Home extends Component {
   render() {
     return (
       <ScrollView>
-        <Text>Home</Text>
+        <CourseSelection navigation={this.props.navigation} />
       </ScrollView>
     )
   }
