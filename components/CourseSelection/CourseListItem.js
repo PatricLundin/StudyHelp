@@ -4,21 +4,21 @@ import { View, Text, AppRegistry, StyleSheet, Button } from 'react-native';
 export default class CourseListItem extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
-      displayText: props.text
+      data: props.data,
+      navigateTo: props.navigateTo
     }
   }
 
   render() {
     return (
       <View style={styles.row}>
-        <Button title={this.state.displayText}
+        <Button title={this.state.data.title}
                 style={styles.row}
                 onPress={() => this.props.navigation.navigate(
-                  'Course',
+                  this.state.navigateTo,
                   {
-                    info: this.state.displayText
+                    data: this.state.data
                   }
                 )}
         />
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    height: 30,
+    height: 50,
     borderStyle: 'solid',
     borderColor: '#ccc',
     borderBottomWidth: 1,

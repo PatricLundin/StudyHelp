@@ -9,6 +9,7 @@ import { StackNavigator, TabNavigator } from 'react-navigation';
 
 import Home from './screens/Home/Home';
 import Course from './components/Course/Course';
+import CourseQuestions from './components/CourseQuestions/CourseQuestions'
 
 import InfoTab from "./screens/InfoTab/InfoTab";
 import Settings from "./screens/Settings/Settings";
@@ -26,6 +27,13 @@ const HomeScreen = StackNavigator({
     path: '/Course',
     navigationOptions: {
       title: 'Course',
+    },
+  },
+  CourseQuestions: {
+    screen: CourseQuestions,
+    path: '/CourseQuestions',
+    navigationOptions: {
+      title: 'CourseQuestions',
     },
   }
 });
