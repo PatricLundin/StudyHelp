@@ -8,7 +8,15 @@ export default class CourseItem extends Component {
     AsyncStorage.getItem('@DataStore:' + props.data.title)
       .then((value) => {
         if(!value) {
-          AsyncStorage.setItem('@DataStore:' + props.data.title, JSON.stringify({count: 0}))
+          AsyncStorage.setItem(
+            '@DataStore:' + props.data.title,
+            JSON.stringify(
+              {
+                count: 0,
+                correct: 0,
+                incorrect: 0
+              })
+          )
         }
       })
       .catch((error) => {
@@ -20,7 +28,9 @@ export default class CourseItem extends Component {
       data: props.data,
       navigateTo: props.navigateTo,
       itemData: {
-        count: 0
+        count: 0,
+        correct: 0,
+        incorrect: 0
       }
     }
   }
@@ -42,20 +52,40 @@ export default class CourseItem extends Component {
   };
 
   onButtonPress = () => {
-    AsyncStorage.setItem('@DataStore:' + this.props.data.title, JSON.stringify({count: this.state.itemData.count + 1}));
+    AsyncStorage.setItem(
+      '@DataStore:' + this.props.data.title,
+      JSON.stringify({
+        count: this.state.itemData.count + 1,
+        correct: this.state.itemData.correct,
+        incorrect: this.state.itemData.incorrect
+      }));
     this.props.navigation.navigate(
       this.state.navigateTo,
       {
-        data: this.state.data
+        data: this.state.data,
+        storage: '@DataStore:' + this.props.data.title,
+        itemData: {
+          count: this.state.itemData.count + 1,
+          correct: this.state.itemData.correct,
+          incorrect: this.state.itemData.incorrect
+        }
       }
     );
-    this.setState({itemData: {count: this.state.itemData.count + 1}});
+    this.setState({itemData: {
+        count: this.state.itemData.count + 1,
+        correct: this.state.itemData.correct,
+        incorrect: this.state.itemData.incorrect
+    }});
   };
 
   render() {
     return (
       <View style={styles.row}>
-        <View style={styles.view}><Text style={styles.text}>{"Count: " + this.state.itemData.count}</Text></View>
+        <View style={styles.view}>
+          <Text style={styles.text}>{"Count: " + this.state.itemData.count}</Text>
+          <Text style={styles.text}>{"Correct: " + this.state.itemData.correct}</Text>
+          <Text style={styles.text}>{"Incorrect: " + this.state.itemData.incorrect}</Text>
+        </View>
         <View style={styles.view2}>
           <Button title={this.state.data.title}
                   style={styles.button}
