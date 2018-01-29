@@ -7,12 +7,12 @@
 import React from 'react';
 import { StackNavigator, TabNavigator } from 'react-navigation';
 
-import Home from './screens/Home/Home';
+import Home from './scenes/Home/Home';
 import Course from './components/Course/Course';
 import CourseQuestions from './components/CourseQuestions/CourseQuestions'
 
-import InfoTab from "./screens/InfoTab/InfoTab";
-import Settings from "./screens/Settings/Settings";
+import InfoTab from "./scenes/InfoTab/InfoTab";
+import Settings from "./scenes/Settings/Settings";
 
 const HomeScreen = StackNavigator({
   Home: {
