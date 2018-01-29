@@ -16,7 +16,6 @@ export default class CourseInfo extends Component {
     return (
       <View style={styles.view}>
         <Text style={styles.title}>{this.state.title}</Text>
-        <Text style={styles.text}>{this.state.text}</Text>
       </View>
     )
   }
@@ -27,14 +26,15 @@ const styles = StyleSheet.create({
     height: 50,
     maxHeight: 50,
     flex: 1,
-    flexDirection: 'column'
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
   },
   title: {
     height: 20,
     maxHeight: 20,
-    justifyContent: 'center',
-    alignItems: 'center',
-    fontSize: 20
+    fontSize: 20,
+    flex: 1
   },
   text: {
     height: 30,

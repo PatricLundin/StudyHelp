@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, AppRegistry, ScrollView, ListView, StyleSheet } from 'react-native';
 
 import CourseInfo from "./CourseInfo";
-import CourseListItem from '../CourseSelection/CourseListItem'
+import CourseItem from './CourseItem';
 
 export default class Course extends Component {
   constructor(props) {
@@ -22,7 +22,7 @@ export default class Course extends Component {
         <ListView
           dataSource={this.state.dataSource}
           renderRow={(rowData) =>
-            <CourseListItem
+            <CourseItem
               navigation={this.props.navigation}
               data={rowData}
               navigateTo={'CourseQuestions'}
